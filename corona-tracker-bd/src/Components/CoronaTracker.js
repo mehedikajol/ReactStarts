@@ -26,41 +26,58 @@ export default function CoronaTracker() {
       <div>
         <h2>Corona Cases Tracker for Bangladesh</h2>
         <p>
-          দেশের নাম: <span>{coronaCases.country}</span>
+          Country: <span>{coronaCases.country}</span>
         </p>
       </div>
       <div className={styles.mainContent}>
         <div className={styles.childDiv}>
-          <h3>cases</h3>
+          <h3>
+            <span>Total</span> Cases
+          </h3>
           <p>
-            মোট কেস: <span>{coronaCases.cases}</span>
-          </p>
-
-          <p>
-            মোট সক্রিয় কেস: <span>{coronaCases.active}</span>
-          </p>
-          <p>
-            নতুন কেস: <span>{coronaCases.todayCases}</span>
+            Total Cases: <span>{coronaCases.cases}</span>
           </p>
         </div>
 
         <div className={styles.childDiv}>
-          <h3>Deaths</h3>
+          <h3>
+            <span>Total</span> Deaths
+          </h3>
           <p>
-            মোট মৃত্যু: <span>{coronaCases.deaths}</span>
+            Total Deaths: <span>{coronaCases.deaths}</span>
           </p>
+        </div>
+        <div className={styles.childDiv}>
+          <h3>
+            <span>Total</span> Recovery
+          </h3>
           <p>
-            নতুন মৃত্যূ: <span>{coronaCases.todayDeaths}</span>
+            Total Recovery: <span>{coronaCases.recovered}</span>
+          </p>
+        </div>
+        <div className={styles.childDiv}>
+          <h3>
+            <span>Today</span> Cases
+          </h3>
+          <p>
+            New Cases: <span>{coronaCases.todayCases}</span>
+          </p>
+        </div>
+        <div className={styles.childDiv}>
+          <h3>
+            <span>Today</span> Deaths
+          </h3>
+          <p>
+            New Death: <span>{coronaCases.todayDeaths}</span>
           </p>
         </div>
 
         <div className={styles.childDiv}>
-          <h3>Recovery</h3>
+          <h3>
+            <span>Today</span> Recovery
+          </h3>
           <p>
-            মোট সুস্থ হয়েছে: <span>{coronaCases.recovered}</span>
-          </p>
-          <p>
-            আজ সুস্থ হয়েছে: <span>{coronaCases.todayRecovered}</span>
+            New Recovery: <span>{coronaCases.todayRecovered}</span>
           </p>
         </div>
       </div>

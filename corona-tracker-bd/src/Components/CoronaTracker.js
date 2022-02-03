@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import "./CoronaTracker.module.css";
+import styles from "./CoronaTracker.module.css";
 
 export default function CoronaTracker() {
   const [coronaCases, setCoronaCases] = useState([]);
@@ -22,45 +22,48 @@ export default function CoronaTracker() {
   }, []);
 
   return (
-    <>
-      <h2>Corona Cases Tracker for Bangladesh</h2>
-      <p>
-        Country Name: <span>{coronaCases.country}</span>
-      </p>
-
+    <div className={styles.mainDiv}>
       <div>
-        <h3>cases</h3>
+        <h2>Corona Cases Tracker for Bangladesh</h2>
         <p>
-          Total Cases: <span>{coronaCases.cases}</span>
-        </p>
-
-        <p>
-          Total Active Cases: <span>{coronaCases.active}</span>
-        </p>
-        <p>
-          Today New Cases: <span>{coronaCases.todayCases}</span>
+          দেশের নাম: <span>{coronaCases.country}</span>
         </p>
       </div>
+      <div className={styles.mainContent}>
+        <div className={styles.childDiv}>
+          <h3>cases</h3>
+          <p>
+            মোট কেস: <span>{coronaCases.cases}</span>
+          </p>
 
-      <div>
-        <h3>Deaths</h3>
-        <p>
-          Total: <span>{coronaCases.deaths}</span>
-        </p>
-        <p>
-          Today: <span>{coronaCases.todayDeaths}</span>
-        </p>
-      </div>
+          <p>
+            মোট সক্রিয় কেস: <span>{coronaCases.active}</span>
+          </p>
+          <p>
+            নতুন কেস: <span>{coronaCases.todayCases}</span>
+          </p>
+        </div>
 
-      <div>
-        <h3>Recovery</h3>
-        <p>
-          Total Recoved: <span>{coronaCases.recovered}</span>
-        </p>
-        <p>
-          Today Recovery: <span>{coronaCases.todayRecovered}</span>
-        </p>
+        <div className={styles.childDiv}>
+          <h3>Deaths</h3>
+          <p>
+            মোট মৃত্যু: <span>{coronaCases.deaths}</span>
+          </p>
+          <p>
+            নতুন মৃত্যূ: <span>{coronaCases.todayDeaths}</span>
+          </p>
+        </div>
+
+        <div className={styles.childDiv}>
+          <h3>Recovery</h3>
+          <p>
+            মোট সুস্থ হয়েছে: <span>{coronaCases.recovered}</span>
+          </p>
+          <p>
+            আজ সুস্থ হয়েছে: <span>{coronaCases.todayRecovered}</span>
+          </p>
+        </div>
       </div>
-    </>
+    </div>
   );
 }

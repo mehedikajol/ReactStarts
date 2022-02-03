@@ -1,17 +1,38 @@
-p {
-  font-size: 24px;
-  display: inline-block;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  background: aqua;
-  border: 1px solid #666666;
-  padding: 10px;
-  border-radius: 5px;
+.mainDiv {
+  height: 100vh;
+  width: 100%;
+  font-size: 15px;
 }
-p > span {
-  display: block;
-  border-top: 1px solid #000;
-  margin: 10px 0;
-  background: lightblue;
+.mainDiv h2 {
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  margin: 2% 5%;
+}
+.childDiv {
+  border: 1px solid #000;
+  width: 30%;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 15px;
+  transition: 0.5s;
+}
+
+.childDiv:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+.childDiv > h3 {
+  font-size: 32px;
+  text-transform: capitalize;
+}
+
+.childDiv > p {
+  margin: 5px 0;
 }

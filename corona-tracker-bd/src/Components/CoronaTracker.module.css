@@ -1,0 +1,17 @@
+p {
+  font-size: 24px;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  background: aqua;
+  border: 1px solid #666666;
+  padding: 10px;
+  border-radius: 5px;
+}
+p > span {
+  display: block;
+  border-top: 1px solid #000;
+  margin: 10px 0;
+  background: lightblue;
+}

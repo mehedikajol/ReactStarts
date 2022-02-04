@@ -3,6 +3,7 @@ import styles from "./CoronaTracker.module.css";
 
 export default function CoronaTracker() {
   const [coronaCases, setCoronaCases] = useState([]);
+  const [updateDate, setUpdateDate] = useState([]);
 
   const getCovidData = async () => {
     try {
@@ -11,7 +12,9 @@ export default function CoronaTracker() {
       );
       const actualData = await res.json();
       setCoronaCases(actualData);
-      console.log(actualData);
+      let date = new Date(actualData.updated);
+      let lastDate = date.toDateString();
+      setUpdateDate(lastDate);
     } catch (error) {
       console.log(error);
     }
@@ -80,6 +83,15 @@ export default function CoronaTracker() {
             New Recovery: <span>{coronaCases.todayRecovered}</span>
           </p>
         </div>
+
+        {
+          <div className={styles.childDiv}>
+            <h3>
+              <span>Last</span> Updated
+            </h3>
+            <p>{updateDate}</p>
+          </div>
+        }
       </div>
     </div>
   );

@@ -30,13 +30,16 @@
 .childDiv:nth-child(3n) {
   background: rgba(0, 255, 0, 0.75);
 }
+.childDiv:last-child {
+  background: gray;
+}
 
 .childDiv {
   border: 1px solid #000;
   width: 30%;
-  height: 180px;
+  height: 150px;
   color: #ffffff;
-  margin: 25px 0;
+  margin: 10px auto;
   border-radius: 5px;
   display: flex;
   flex-direction: column;

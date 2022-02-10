@@ -1,14 +1,14 @@
 import React from "react";
 
 const DisplayData = (props) => {
-  const { caseName, cases } = props;
+  const { caseName, spanText, cases } = props;
   return (
     <div className="childDiv">
       <h3>
-        <span>Total</span> {caseName}
+        <span>{spanText}</span> {caseName}
       </h3>
       <p>
-        Total Cases: <span>{cases}</span>
+        {spanText} {caseName}: <span>{cases}</span>
       </p>
     </div>
   );

@@ -8,7 +8,7 @@ const DisplayData = (props) => {
         <span>{spanText}</span> {caseName}
       </h3>
       <p>
-        {spanText} {caseName}: <span>{cases}</span>
+        <span>{cases}</span>
       </p>
     </div>
   );

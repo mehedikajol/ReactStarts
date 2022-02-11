@@ -5,21 +5,22 @@ import CountryDisplay from "./CountryDisplay";
 export default function CoronaTracker() {
   const [coronaCases, setCoronaCases] = useState([]);
   const [updateDate, setUpdateDate] = useState([]);
-  const [tempCountryName, setTempCountryName] = useState("");
-  const [countryName, setCountryName] = useState("bangladesh");
+  const [updateTime, setUpdateTime] = useState([]);
 
   const getCovidData = async () => {
-    let linkURL = `https://corona.lmao.ninja/v2/countries/${countryName}?yesterday&strict&query`;
     try {
-      const res = await fetch(linkURL);
+      const res = await fetch(
+        `https://corona.lmao.ninja/v2/countries/bangladesh?yesterday&strict&query`
+      );
       const actualData = await res.json();
       setCoronaCases(actualData);
       let date = new Date(actualData.updated);
+      let lastTime = date.toLocaleTimeString();
       let lastDate = date.toDateString();
+      setUpdateTime(lastTime);
       setUpdateDate(lastDate);
     } catch (error) {
       console.log(error);
-      return <div>No DATA FOUND!!</div>;
     }
   };
 
@@ -27,31 +28,9 @@ export default function CoronaTracker() {
     getCovidData();
   });
 
-  const getCountryName = (event) => {
-    setTempCountryName(event.target.value);
-  };
-  const setFinalCountryName = (event) => {
-    event.preventDefault();
-    setCountryName(tempCountryName);
-    setTempCountryName("");
-  };
-
   return (
     <div className="mainDiv">
       <CountryDisplay country={coronaCases.country} />
-
-      <form>
-        <input
-          type="text"
-          placeholder="Enter Country Name"
-          value={tempCountryName}
-          onChange={getCountryName}
-        />
-        <button onClick={setFinalCountryName} type="submit" value="Get Data">
-          Get Data
-        </button>
-      </form>
-
       <div className="mainContent">
         <DisplayData
           cases={coronaCases.cases}
@@ -84,7 +63,7 @@ export default function CoronaTracker() {
           caseName={"Recovery"}
         />
         <DisplayData
-          cases={updateDate}
+          cases={updateDate + "\n" + updateTime}
           spanText={"Last"}
           caseName={"Updated"}
         />

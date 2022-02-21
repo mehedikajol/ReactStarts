@@ -25,9 +25,15 @@ body {
 }
 select {
   margin: 5px auto -20px auto;
-  padding: 5px;
+  padding: 3px 10px;
   font-size: 15px;
+  outline: none;
+  border: none;
   border-radius: 5px;
+}
+select:focus {
+  outline: none;
+  border: none;
 }
 .mainContent {
   display: flex;

@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+//import { debounce } from "lodash";
 import DisplayData from "./DisplayData";
 import CountryDisplay from "./CountryDisplay";
 
@@ -7,9 +8,20 @@ export default function CoronaTracker() {
   const [updateDate, setUpdateDate] = useState([]);
   const [updateTime, setUpdateTime] = useState([]);
   const [country, setCountry] = useState("bangladesh");
-  let link = `https://corona.lmao.ninja/v2/countries/${country}?yesterday&strict&query`;
+
+  const stateChange = (event) => {
+    let tempCountry = "";
+    if (event.target.type === "select-one") {
+      tempCountry = event.target.value;
+    }
+    setCountry(tempCountry);
+  };
 
   const getCovidData = async () => {
+    let link =
+      "https://corona.lmao.ninja/v2/countries/" +
+      country +
+      "?yesterday&strict&query";
     try {
       const res = await fetch(link);
       const actualData = await res.json();
@@ -23,17 +35,11 @@ export default function CoronaTracker() {
       console.log(error);
     }
   };
-  const stateChange = (event) => {
-    if (event.target.type === "select-one") {
-      console.log("State is: ", country);
-      setCountry(event.target.value);
-      console.log("State is: ", country);
-    }
-  };
 
   useEffect(() => {
     getCovidData();
-  });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [country]);
 
   return (
     <div className="mainDiv">
@@ -41,7 +47,8 @@ export default function CoronaTracker() {
 
       <select value={country} onChange={stateChange}>
         <option value="bangladesh">Bangladesh</option>
-        <option value="india">India</option>
+        <option value="bhutan">Bhutan</option>
+        <option value="nepal">Nepal</option>
       </select>
 
       <div className="mainContent">

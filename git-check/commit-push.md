@@ -1,0 +1,1 @@
+- git commit command `git commit -m "commit message"`
